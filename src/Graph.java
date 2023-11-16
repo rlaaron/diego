@@ -14,12 +14,13 @@ public class Graph {
         graph.putIfAbsent(node, new ArrayList<>());
     }
 
-    public void addEdge(Node source, Node destination, int weight) {
+    public void addEdge(Node source, Node destination, double weight) {
         if (!graph.containsKey(source) || !graph.containsKey(destination)) {
             throw new IllegalArgumentException("Nodes must be in the graph before adding an edge.");
         }
 
-        Edge edge = new Edge(destination, weight);
+        // Edge edge = new Edge(destination, weight);
+        Edge edge = new Edge(source, destination, weight);
         graph.get(source).add(edge);
     }
 
@@ -33,6 +34,19 @@ public class Graph {
             nodes.add(node);
         }
         return nodes;
+    }
+
+
+
+    public List<Edge> getEdges(){
+        List<Edge> edges = new ArrayList<>();
+        for (Node node : graph.keySet()) {
+            // for (Edge edge : graph.get(node)) {
+            //     edges.add(edge);
+            // }
+            edges.addAll(graph.get(node));
+        }
+        return edges;
     }
 
     public void printGraph() {
