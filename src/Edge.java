@@ -1,8 +1,9 @@
 public class Edge {
-    private Node destination;
-    private int weight;
+    private Node source,destination;
+    private Double weight;
 
-    public Edge(Node destination, int weight) {
+    public Edge(Node source, Node destination, Double weight){
+        this.source = source;
         this.destination = destination;
         this.weight = weight;
     }
@@ -11,7 +12,10 @@ public class Edge {
         return destination;
     }
 
-    public int getWeight() {
+    public Node getSource() {
+        return source;
+    }
+    public double getWeight() {
         return weight;
     }
 
@@ -19,7 +23,7 @@ public class Edge {
         this.destination = destination;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
